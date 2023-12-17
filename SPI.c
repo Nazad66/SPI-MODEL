@@ -18,9 +18,9 @@ void begin ()
      //Master configuration
       SPI_CR1 |= (1<<2);
       
-     //Slave management enable
-      SPI_CR1 |= (1<<9) | (1<<8) ;             //SSM=1 , SSI=1
-      //SPI_CR2 |= (1<<2);                      //SS output enable
+     //Software slave management enable
+      SPI_CR1 |=  (1<<9) ;           //SSM=1
+      SPI_CR1 &= ~(1<<8) ;           // SSI=0
       
      //SPI enable
       SPI_CR1 |= (1<<6);
