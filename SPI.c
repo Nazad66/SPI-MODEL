@@ -6,8 +6,8 @@ void begin ()
      //GPIO pins configuration
       RCC_AHB1ENR |= (1<<0);                 //IO port A clock enable
      // PA4(SPI1_NSS), PA5(SPI1_SCK), PA6(SPI1_MISO), PA7(SPI1_MOSI)
-      GPIOA_MODER |= (2<<10) | (2<<12) | (2<<14) | (1<<8) ; //(PA5,PA6,PA7) alternate mode & PA4 output
-      GPIOA_AFRL  |= (5<<20) | (5<<24) | (5<<28) ;         // SPI1 alternate functions
+      GPIOA_MODER |= (2<<8) | (2<<10) | (2<<12) | (2<<14)  ;          //(PA4,PA5,PA6,PA7) alternate mode 
+      GPIOA_AFRL  |= (5<<16) | (5<<20) | (5<<24) | (5<<28) ;         // SPI1 alternate functions
       
      //SPI1 clock enable
       RCC_APB2ENR |= (1<<12);
@@ -141,10 +141,11 @@ unsigned char transfer (unsigned char TxData)
          
      //Wait for TXE=1 to indicate that transmit buffer is empty
         while( !((SPI_SR) & (1<<1)) );
-        
-          SPI_DR = TxData;
+
+      //Write data and dummy byte to data register 
+          SPI_DR = TxData << 8;
           
-     /* Wait for  BSY=0  transmission of the last data is complete
+     /* Wait for  BSY=0  SPI is not busy  *transmission of the last data is complete*
                   RXNE=1 receive buffer is not empty  */
         while( !((SPI_SR) & (1<<0))  ||  SPI_SR & (1<<7) );
 
