@@ -20,7 +20,7 @@ void begin ()
       
      //Software slave management enable
       SPI_CR1 |=  (1<<9) ;           //SSM=1
-      SPI_CR1 &= ~(1<<8) ;           // SSI=0
+      SPI_CR1 |=  (1<<8) ;           // SSI=1
       
      //SPI enable
       SPI_CR1 |= (1<<6);
