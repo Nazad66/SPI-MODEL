@@ -6,7 +6,7 @@
 void main() {
                
                begin();
-               beginTransaction(LSBFIRST , fPCLK16 , bitMode8 , SPI_MODE0);
+               beginTransaction(LSBFIRST , FPCLK16 , BITMODE8 , SPI_MODE0);
      
       while(1)
      {  
