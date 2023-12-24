@@ -1,12 +1,24 @@
 /* MCAL */
 #include "SPI.h"
-
+ 
+ unsigned char Tx ;
+ 
 void main() {
-
-
-     while(1)
-     {
-
+               
+               begin();
+               beginTransaction(LSBFIRST , fPCLK16 , bitMode8 , SPI_MODE0);
+     
+      while(1)
+     {  
+            
+             Tx = 1 ;
+            transfer (Tx);
+            Delay_ms(3000);       
+           
+             Tx = 0 ;
+            transfer (Tx);
+            Delay_ms(3000);   
+               
      }
 
 }
