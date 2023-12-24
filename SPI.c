@@ -32,11 +32,11 @@ void begin ()
 void setDataMode ( int mode, int clockMode)
 {
      //Data frame format selection
-      if(mode == bitMode8)
+      if(mode == BITMODE8)
         {
            SPI_CR1  &= ~(1<<11);       //8-bit data frame format
         }
-      if(mode == bitMode16)
+      if(mode == BITMODE16)
         {
            SPI_CR1  |=  (1<<11);       //16-bit data frame format
         }
@@ -72,49 +72,49 @@ void setClockDivider(int freq_divider)
       //Baud rate Control
       switch(freq_divider)
         {
-             case fPCLK2:
+             case FPCLK2:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK4:
+             case FPCLK4:
                SPI_CR1  |=  (1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK8:
+             case FPCLK8:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  |=  (1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK16:
+             case FPCLK16:
                SPI_CR1  |=  (1<<3);
                SPI_CR1  |=  (1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK32:
+             case FPCLK32:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  |=  (1<<5);
                break;
 
-             case fPCLK64:
+             case FPCLK64:
                SPI_CR1  |=  (1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  |=  (1<<5);
                break;
 
-             case fPCLK128:
+             case FPCLK128:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  |=  (1<<4);
                SPI_CR1  |=  (1<<5);
                break;
 
-             case fPCLK256:
+             case FPCLK256:
                SPI_CR1  |= (1<<3);
                SPI_CR1  |= (1<<4);
                SPI_CR1  |= (1<<5);
@@ -182,64 +182,65 @@ void beginTransaction (int byteOrder, int dataMode, int baudRate, int clockMode)
         //Baud rate Control
       switch(baudRate)
         {
-             case fPCLK2:
+             case FPCLK2:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK4:
+             case FPCLK4:
                SPI_CR1  |=  (1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK8:
+             case FPCLK8:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  |=  (1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK16:
+             case FPCLK16:
                SPI_CR1  |=  (1<<3);
                SPI_CR1  |=  (1<<4);
                SPI_CR1  &= ~(1<<5);
                break;
 
-             case fPCLK32:
+             case FPCLK32:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  |=  (1<<5);
                break;
 
-             case fPCLK64:
+             case FPCLK64:
                SPI_CR1  |=  (1<<3);
                SPI_CR1  &= ~(1<<4);
                SPI_CR1  |=  (1<<5);
                break;
 
-             case fPCLK128:
+             case FPCLK128:
                SPI_CR1  &= ~(1<<3);
                SPI_CR1  |=  (1<<4);
                SPI_CR1  |=  (1<<5);
                break;
 
-             case fPCLK256:
+             case FPCLK256:
                SPI_CR1  |= (1<<3);
                SPI_CR1  |= (1<<4);
                SPI_CR1  |= (1<<5);
                break;
         }
 
-         //Data frame format selection
-      if(dataMode == bitMode8)
+           //Data frame format selection
+         if(dataMode == BITMODE8)
         {
-           SPI_CR1  &= ~(1<<11);       //8-bit data frame format
+             SPI_CR1  &= ~(1<<11);       //8-bit data frame format
         }
-      if(dataMode == bitMode16)
+        if(dataMode == BITMODE16)
         {
-           SPI_CR1  |= (1<<11);       //16-bit data frame format
+             SPI_CR1  |=  (1<<11);       //16-bit data frame format
         }
+
 
          //Select clock phase and polarity
         switch(clockMode)
