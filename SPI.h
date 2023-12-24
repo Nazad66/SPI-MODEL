@@ -7,8 +7,8 @@
                                             /* MACROS */
 
  //Data frame selection 
-#define bitMode8      0
-#define bitMode16     1
+#define BITMODE8      0
+#define BITMODE16     1
 
 //Clock Phase and Polarity modes
 #define SPI_MODE0     0
@@ -17,14 +17,14 @@
 #define SPI_MODE3     3
 
 //Baud Rate selection
-#define fPCLK2        0
-#define fPCLK4        1
-#define fPCLK8        2
-#define fPCLK16       3
-#define fPCLK32       4
-#define fPCLK64       5
-#define fPCLK128      6
-#define fPCLK256      7
+#define FPCLK2        0
+#define FPCLK4        1
+#define FPCLK8        2
+#define FPCLK16       3
+#define FPCLK32       4
+#define FPCLK64       5
+#define FPCLK128      6
+#define FPCLK256      7
 
 //Transfer order 
 #define LSBFIRST      1
